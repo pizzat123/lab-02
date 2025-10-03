@@ -97,6 +97,7 @@ plastic_data_all %>% head(n = 10)
 mean(plastic_data_all$total_mismanage_plastic)
 
 max(plastic_data_all$total_mismanage_plastic)
+
 ```
 
 
