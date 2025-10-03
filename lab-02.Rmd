@@ -104,7 +104,9 @@ percentage_waste <- plastic_data_all %>%
                     mutate(pct_mismanaged_plastic_ocean = ( mismanaged_plastic_ocean /     mismanaged_plastic ) * 100)
 
 median_waste <- percentage_waste %>% 
-  select(region, pct_mismanaged_plastic_ocean)
+  group_by(region) %>% 
+  select(pct_mismanaged_plastic_ocean) %>%
+  mutate(median_plastic = median(pct_mismanaged_plastic_ocean))
 
 ```
 
