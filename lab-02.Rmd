@@ -79,8 +79,8 @@ plastic_data_all %>% head(n = 10)
 
 ```{r Ex1, message = FALSE}
 # Write your code here to answer exercise 1
-
-
+plastic_data_all %>% select(region, name) %>% 
+  count(region)
 
 ```
 
@@ -104,6 +104,15 @@ max(plastic_data_all$total_mismanage_plastic)
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
+percentage_waste <- plastic_data_all %>% 
+                    mutate(pct_mismanaged_plastic_ocean = ( mismanaged_plastic_ocean /       mismanaged_plastic ) * 100) %>% 
+  drop_na(pct_mismanaged_plastic_ocean)
+
+
+median_waste <- percentage_waste %>% 
+  group_by(region) %>% 
+  select(pct_mismanaged_plastic_ocean) %>%
+  summarise(median(pct_mismanaged_plastic_ocean))
 
 
 
