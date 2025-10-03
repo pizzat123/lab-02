@@ -100,8 +100,11 @@ plastic_data_all %>% count(region)
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
+percentage_waste <- plastic_data_all %>% 
+                    mutate(pct_mismanaged_plastic_ocean = ( mismanaged_plastic_ocean /     mismanaged_plastic ) * 100)
 
-
+median_waste <- percentage_waste %>% 
+  select(region, pct_mismanaged_plastic_ocean)
 
 ```
 
